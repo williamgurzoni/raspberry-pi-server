@@ -8,8 +8,12 @@ services:
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       PGDATA: /var/lib/postgresql/data/pgdata
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8080:8080
+  pgadmin-compose:
+    image: dpage/pgadmin4
+    environment: 
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    ports: 
+      - 16543:8080
+    depends_on: 
+      - db 
