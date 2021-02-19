@@ -1,0 +1,15 @@
+version: "2"
+services:
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      - ${VOLUME_DATA}:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGDATA: /var/lib/postgresql/data/pgdata
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
